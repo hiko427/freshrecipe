@@ -2,4 +2,5 @@
 - frontend : HTML,CSS,Javascript
 - backend : Go
 - framework : Bootstrap,Gin
-- database : Postgres
+- database : Postgre
+- api : GPT ...

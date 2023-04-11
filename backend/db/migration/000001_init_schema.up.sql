@@ -3,7 +3,7 @@ CREATE TABLE "recipes" (
   "cuisine" varchar NOT NULL,
   "num_people" bigint NOT NULL,
   "recipe_time" varchar NOT NULL,
-  "unwanted_ingredients" text,
+  "unwanted_ingredients" text NOT NULL,
   "wanted_ingredients" text NOT NULL,
   "recipe" text NOT NULL,
   "created_at" timestamptz NOT NULL DEFAULT (now())

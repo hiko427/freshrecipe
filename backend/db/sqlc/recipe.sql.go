@@ -13,21 +13,21 @@ const createRecipe = `-- name: CreateRecipe :one
 INSERT INTO recipes (
   cuisine,
   num_people,
-  recipe_time,
-  unwanted_ingredients,
-  wanted_ingredients,
+  ingredients,
+  excluded_ingredients,
+  mealtype,
   recipe
 ) VALUES (
   $1, $2 ,$3 ,$4 ,$5 ,$6
-) RETURNING id, cuisine, num_people, recipe_time, unwanted_ingredients, wanted_ingredients, recipe, created_at
+) RETURNING id, cuisine, num_people, ingredients, excluded_ingredients, mealtype, recipe, created_at
 `
 
 type CreateRecipeParams struct {
 	Cuisine             string `json:"cuisine"`
 	NumPeople           int64  `json:"num_people"`
-	RecipeTime          string `json:"recipe_time"`
-	UnwantedIngredients string `json:"unwanted_ingredients"`
-	WantedIngredients   string `json:"wanted_ingredients"`
+	Ingredients         string `json:"ingredients"`
+	ExcludedIngredients string `json:"excluded_ingredients"`
+	Mealtype            string `json:"mealtype"`
 	Recipe              string `json:"recipe"`
 }
 
@@ -35,9 +35,9 @@ func (q *Queries) CreateRecipe(ctx context.Context, arg CreateRecipeParams) (Rec
 	row := q.db.QueryRowContext(ctx, createRecipe,
 		arg.Cuisine,
 		arg.NumPeople,
-		arg.RecipeTime,
-		arg.UnwantedIngredients,
-		arg.WantedIngredients,
+		arg.Ingredients,
+		arg.ExcludedIngredients,
+		arg.Mealtype,
 		arg.Recipe,
 	)
 	var i Recipe
@@ -45,9 +45,9 @@ func (q *Queries) CreateRecipe(ctx context.Context, arg CreateRecipeParams) (Rec
 		&i.ID,
 		&i.Cuisine,
 		&i.NumPeople,
-		&i.RecipeTime,
-		&i.UnwantedIngredients,
-		&i.WantedIngredients,
+		&i.Ingredients,
+		&i.ExcludedIngredients,
+		&i.Mealtype,
 		&i.Recipe,
 		&i.CreatedAt,
 	)
@@ -65,7 +65,7 @@ func (q *Queries) DeleteRecipe(ctx context.Context, id int64) error {
 }
 
 const getAllRecipe = `-- name: GetAllRecipe :one
-SELECT id, cuisine, num_people, recipe_time, unwanted_ingredients, wanted_ingredients, recipe, created_at FROM recipes
+SELECT id, cuisine, num_people, ingredients, excluded_ingredients, mealtype, recipe, created_at FROM recipes
 `
 
 func (q *Queries) GetAllRecipe(ctx context.Context) (Recipe, error) {
@@ -75,9 +75,9 @@ func (q *Queries) GetAllRecipe(ctx context.Context) (Recipe, error) {
 		&i.ID,
 		&i.Cuisine,
 		&i.NumPeople,
-		&i.RecipeTime,
-		&i.UnwantedIngredients,
-		&i.WantedIngredients,
+		&i.Ingredients,
+		&i.ExcludedIngredients,
+		&i.Mealtype,
 		&i.Recipe,
 		&i.CreatedAt,
 	)
@@ -85,7 +85,7 @@ func (q *Queries) GetAllRecipe(ctx context.Context) (Recipe, error) {
 }
 
 const getRecipe = `-- name: GetRecipe :one
-SELECT id, cuisine, num_people, recipe_time, unwanted_ingredients, wanted_ingredients, recipe, created_at FROM recipes
+SELECT id, cuisine, num_people, ingredients, excluded_ingredients, mealtype, recipe, created_at FROM recipes
 WHERE id = $1 LIMIT 1
 `
 
@@ -96,9 +96,9 @@ func (q *Queries) GetRecipe(ctx context.Context, id int64) (Recipe, error) {
 		&i.ID,
 		&i.Cuisine,
 		&i.NumPeople,
-		&i.RecipeTime,
-		&i.UnwantedIngredients,
-		&i.WantedIngredients,
+		&i.Ingredients,
+		&i.ExcludedIngredients,
+		&i.Mealtype,
 		&i.Recipe,
 		&i.CreatedAt,
 	)
@@ -106,7 +106,7 @@ func (q *Queries) GetRecipe(ctx context.Context, id int64) (Recipe, error) {
 }
 
 const listRecipe = `-- name: ListRecipe :many
-SELECT id, cuisine, num_people, recipe_time, unwanted_ingredients, wanted_ingredients, recipe, created_at FROM recipes
+SELECT id, cuisine, num_people, ingredients, excluded_ingredients, mealtype, recipe, created_at FROM recipes
 ORDER BY id
 LIMIT $1
 OFFSET $2
@@ -130,9 +130,9 @@ func (q *Queries) ListRecipe(ctx context.Context, arg ListRecipeParams) ([]Recip
 			&i.ID,
 			&i.Cuisine,
 			&i.NumPeople,
-			&i.RecipeTime,
-			&i.UnwantedIngredients,
-			&i.WantedIngredients,
+			&i.Ingredients,
+			&i.ExcludedIngredients,
+			&i.Mealtype,
 			&i.Recipe,
 			&i.CreatedAt,
 		); err != nil {

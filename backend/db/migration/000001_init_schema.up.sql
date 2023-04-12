@@ -2,15 +2,15 @@ CREATE TABLE "recipes" (
   "id" bigserial PRIMARY KEY,
   "cuisine" varchar NOT NULL,
   "num_people" bigint NOT NULL,
-  "recipe_time" varchar NOT NULL,
-  "unwanted_ingredients" text NOT NULL,
-  "wanted_ingredients" text NOT NULL,
+  "ingredients" text NOT NULL,
+  "excluded_ingredients" text NOT NULL,
+  "mealtype" varchar NOT NULL,
   "recipe" text NOT NULL,
   "created_at" timestamptz NOT NULL DEFAULT (now())
 );
 
 CREATE INDEX ON "recipes" ("cuisine");
 
-CREATE INDEX ON "recipes" ("recipe_time");
+CREATE INDEX ON "recipes" ("mealtype");
 
 COMMENT ON COLUMN "recipes"."num_people" IS 'must be positive';

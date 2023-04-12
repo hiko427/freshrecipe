@@ -13,9 +13,9 @@ type Recipe struct {
 	Cuisine string `json:"cuisine"`
 	// must be positive
 	NumPeople           int64     `json:"num_people"`
-	RecipeTime          string    `json:"recipe_time"`
-	UnwantedIngredients string    `json:"unwanted_ingredients"`
-	WantedIngredients   string    `json:"wanted_ingredients"`
+	Ingredients         string    `json:"ingredients"`
+	ExcludedIngredients string    `json:"excluded_ingredients"`
+	Mealtype            string    `json:"mealtype"`
 	Recipe              string    `json:"recipe"`
 	CreatedAt           time.Time `json:"created_at"`
 }

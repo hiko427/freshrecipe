@@ -2,9 +2,9 @@
 INSERT INTO recipes (
   cuisine,
   num_people,
-  recipe_time,
-  unwanted_ingredients,
-  wanted_ingredients,
+  ingredients,
+  excluded_ingredients,
+  mealtype,
   recipe
 ) VALUES (
   $1, $2 ,$3 ,$4 ,$5 ,$6

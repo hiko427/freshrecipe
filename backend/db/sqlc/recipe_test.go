@@ -11,9 +11,9 @@ func createRandomRecipe(t *testing.T) Recipe {
 	arg := CreateRecipeParams{
 		Cuisine:             "和食",
 		NumPeople:           3,
-		RecipeTime:          "morning",
-		UnwantedIngredients: "玉ねぎ",
-		WantedIngredients:   "鶏肉",
+		ExcludedIngredients: "玉ねぎ",
+		Ingredients:         "鶏肉",
+		Mealtype:            "morning",
 		Recipe:              "レシピ",
 	}
 	recipe, err := testQueries.CreateRecipe(context.Background(), arg)
@@ -21,9 +21,9 @@ func createRandomRecipe(t *testing.T) Recipe {
 	require.NotEmpty(t, recipe)
 	require.Equal(t, arg.Cuisine, recipe.Cuisine)
 	require.Equal(t, arg.NumPeople, recipe.NumPeople)
-	require.Equal(t, arg.RecipeTime, recipe.RecipeTime)
-	require.Equal(t, arg.UnwantedIngredients, recipe.UnwantedIngredients)
-	require.Equal(t, arg.WantedIngredients, recipe.WantedIngredients)
+	require.Equal(t, arg.Mealtype, recipe.Mealtype)
+	require.Equal(t, arg.ExcludedIngredients, recipe.ExcludedIngredients)
+	require.Equal(t, arg.Ingredients, recipe.Ingredients)
 	require.Equal(t, arg.Recipe, recipe.Recipe)
 	require.NotZero(t, recipe.ID)
 	require.NotZero(t, recipe.CreatedAt)

@@ -1,0 +1,15 @@
+body {
+    background-image: url(../images/home.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Times New Roman', serif;
+}
+
+h1 {
+    color: aliceblue;
+}
+
+label {
+    color: white;
+}

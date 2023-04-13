@@ -19,7 +19,11 @@ func Newserver(store db.Store) *Server {
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.tmpl", nil)
 	})
-	router.POST("/", server.createRecipe)
+	router.POST("/submit", server.createRecipe)
+	router.GET("/show/:recipeID", server.showRecipe)
+	router.GET("/history", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "history.tmpl", nil)
+	})
 	server.router = router
 	return server
 }

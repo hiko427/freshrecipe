@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 
 <head>
     <meta charset="UTF-8">
@@ -18,45 +18,64 @@
         </div>
         <div class="row mt-4">
             <div class="col-md-6 offset-md-3">
-                <form id="recipeForm" method="post" action="/">
+                <form id="recipeForm" method="post" action="/submit">
                     <div class="mb-3">
-                        <label for="cuisine" class="form-label">ジャンルの選択</label>
-                        <select class="form-select" id="cuisine" name="cuisine">
-                            <option value="japanese">和食</option>
-                            <option value="chinese">中華</option>
-                            <option value="western">洋食</option>
-                        </select>
+                        <label class="form-label">ジャンルの選択</label><br>
+                        <div class="btn-group" role="group" aria-label="ジャンル">
+                            <input type="radio" class="btn-check" name="cuisine" id="和食" value="和食" checked>
+                            <label class="btn btn-outline-primary" for="和食">和食</label>
+
+                            <input type="radio" class="btn-check" name="cuisine" id="中華" value="中華">
+                            <label class="btn btn-outline-primary" for="中華">中華</label>
+
+                            <input type="radio" class="btn-check" name="cuisine" id="洋食" value="洋食">
+                            <label class="btn btn-outline-primary" for="洋食">洋食</label>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="num_people" class="form-label">人数</label>
-                        <input type="number" class="form-control" id="num_people" name="num_people"
-                            placeholder="人数を入力してください">
+                        <input type="number" class="form-control" id="num_people" name="num_people" placeholder="例：2"
+                            min="1">
                     </div>
                     <div class="mb-3">
-                        <label for="ingredients" class="form-label">必要な食材</label>
+                        <label for="ingredients" class="form-label">入れたい食材</label>
                         <input type="text" class="form-control" id="ingredients" name="ingredients"
-                            placeholder="必要な食材を入力してください、食材の間スペースを開けてください">
+                            placeholder="例：トマト 豚肉" style="width: 100%;">
                     </div>
                     <div class="mb-3">
                         <label for="excluded_ingredients" class="form-label">アレルギー、いらない食材</label>
                         <input type="text" class="form-control" id="excluded_ingredients" name="excluded_ingredients"
-                            placeholder="いらない食材を入力してください、食材の間スペースを開けてください">
+                            placeholder="例： ねぎ" style="width: 100%;">
                     </div>
                     <div class="mb-3">
-                        <label for="meal_type" class="form-label">時間帯の選択</label>
-                        <select class="form-select" id="meal_type" name="meal_type">
-                            <option value="breakfast">朝</option>
-                            <option value="lunch">昼</option>
-                            <option value="dinner">夜</option>
-                        </select>
+                        <label class="form-label">時間帯の選択</label><br>
+                        <div class="btn-group" role="group" aria-label="時間帯">
+                            <input type="radio" class="btn-check" name="meal_type" id="朝" value="朝" checked>
+                            <label class="btn btn-outline-primary" for="朝">朝</label>
+                            <input type="radio" class="btn-check" name="meal_type" id="昼" value="昼">
+                            <label class="btn btn-outline-primary" for="昼">昼</label>
+
+                            <input type="radio" class="btn-check" name="meal_type" id="夜" value="夜">
+                            <label class="btn btn-outline-primary" for="夜">夜</label>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">レシピを生成</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary text-center"
+                            onclick="displayLoadingMessage();">レシピを生成</button>
+                    </div>
                 </form>
+                <div id="loading-message" style="display: none;" class="text-center mt-3">
+                    <p>レシピ生成中... 約20秒ぐらいかかります</p>
+                </div>
             </div>
         </div>
 
     </div>
-
+    <script>
+        function displayLoadingMessage() {
+            document.getElementById('loading-message').style.display = 'block';
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -64,6 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>

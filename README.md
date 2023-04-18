@@ -9,6 +9,6 @@
 
 家にあるものや食べたいものを使って、次に何を作ろうか迷っている時にとても便利です。例えば、買い物をする前に質問すれば、次に何を買い足せばいいのかが一目瞭然です。
 
-![pic1](frontend/public/images/pic1.png)
-![pic1](frontend/public/images/pic2.png)
-![pic1](frontend/public/images/pic3.png)
+![pic1](public/images/pic1.png)
+![pic1](public/images/pic2.png)
+![pic1](public/images/pic3.png)

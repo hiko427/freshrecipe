@@ -1,5 +1,5 @@
 postgres:
-	docker run --name myrecipe -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.2-alpine
+	docker run --name myrecipe --network recipe-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.2-alpine
 createdb:
 	docker exec -it myrecipe createdb --username=root --owner=root myrecipe
 

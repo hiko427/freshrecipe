@@ -6,10 +6,10 @@ createdb:
 dropdb:
 	docker exec -it myrecipe dropdb myrecipe
 migrateup:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/myrecipe?sslmode=disable" -verbose up
+	migrate -path db/migration -database "postgresql://root:QBcjeHUHKn31qtirXKXe@myrecipe.cptum6fxzwpe.ap-northeast-1.rds.amazonaws.com:5432/recipe" -verbose up
 
 migratedown:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/myrecipe?sslmode=disable" -verbose down
+	migrate -path db/migration -database "postgresql://root:QBcjeHUHKn31qtirXKXe@myrecipe.cptum6fxzwpe.ap-northeast-1.rds.amazonaws.com:5432/myrecipe" -verbose down
 
 sqlc:
 	sqlc generate

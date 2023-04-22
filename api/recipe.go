@@ -35,7 +35,7 @@ func (server *Server) createRecipe(ctx *gin.Context) {
 	content := "あなたはプロのシェフです。以下の条件に基づいてレシビを生成してください。\n *ジャンル：" +
 		recipeData.Cuisine + "\n *食事する人数：" + string(rune(recipeData.NumPeople)) + "人\n *入れたい食材（他の食材を加えても大丈夫、ここに書かれた食材を必ずしも全て使う必要はない）：" + recipeData.Ingredients + "\n *いらない食材:" + recipeData.ExcludedIngredients +
 		"\n *レシピの時間帯:" + recipeData.MealType + "補足：生成されたレシピには料理名、食事する人数分の食材や調味料の分量、作り方、かかる時間などの情報が含まれる。"
-	client := openai.NewClient(config.API_KEY)
+	client := openai.NewClient(config.APIKEY)
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{

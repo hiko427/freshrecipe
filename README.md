@@ -8,6 +8,7 @@
 - CI : Github Actions
 - Deployment : AWS(ECR,RDS,EKS)
 
+[アプリを使ってみる](http://freshrecipe.net)
 
 レシピのジャンル、人数、入れたい食材、いらない食材、食事の時間帯の情報を入力することであなたにおすすめのレシピを作成します。
 

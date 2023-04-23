@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe-api-deployment
+  labels:
+    app: recipe-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: recipe-api
+  template:
+    metadata:
+      labels:
+        app: recipe-api
+    spec:
+      containers:
+      - name: recipe-api
+        image: 588247822263.dkr.ecr.ap-northeast-1.amazonaws.com/recipe:4aa988f82316f0a17c47e3a734a65684543c14b9
+        ports:
+        - containerPort: 8080

@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: recipe-api
-        image: 588247822263.dkr.ecr.ap-northeast-1.amazonaws.com/recipe:4aa988f82316f0a17c47e3a734a65684543c14b9
+        image: 588247822263.dkr.ecr.ap-northeast-1.amazonaws.com/recipe:26d11447677c9fbbcd2a2750a0d91ada14b0926c
         ports:
         - containerPort: 8080

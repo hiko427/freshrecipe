@@ -1,4 +1,4 @@
-## Myrecipe Project built by Golang
+## Freshrecipe
 - Frontend : HTML,CSS,Javascript
 - Backend : Go
 - Framework : Bootstrap,Gin
